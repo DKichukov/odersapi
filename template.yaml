@@ -20,24 +20,29 @@ Resources:
     Properties:
       PrimaryKey:
         Name: id
-
+        Type: Number
   CreateOrderFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ordersapi
       Handler: com.dzhamal.aws.lambda.apis.CreateOrderLambda::createOrder
+      Policies:
+        - DynamoDBCrudPolicy:
+          TableName: !Ref OrdersTable
       Events:
         OrderEvents:
           Type: Api
           Properties:
             Path: /orders
             Method: POST
-
   ReadOrdersFunction:
     Type: AWS::Serverless::Function
     Properties:
       CodeUri: ordersapi
       Handler: com.dzhamal.aws.lambda.apis.ReadOrdersLambda::getOrders
+      Policies:
+        - DynamoDBReadPolicy:
+          TableName: !Ref OrdersTable
       Events:
         OrderEvents:
           Type: Api
