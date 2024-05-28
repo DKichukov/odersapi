@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
   odersapi
@@ -22,7 +22,7 @@ Resources:
         Name: id
 
   CreateOrderFunction:
-    Type: AWS::Serverless::Function 
+    Type: AWS::Serverless::Function
     Properties:
       CodeUri: ordersapi
       Handler: com.dzhamal.aws.lambda.apis.CreateOrderLambda::createOrder
@@ -32,9 +32,9 @@ Resources:
           Properties:
             Path: /orders
             Method: POST
-            
+
   ReadOrdersFunction:
-    Type: AWS::Serverless::Function 
+    Type: AWS::Serverless::Function
     Properties:
       CodeUri: ordersapi
       Handler: com.dzhamal.aws.lambda.apis.ReadOrdersLambda::getOrders
