@@ -28,7 +28,7 @@ Resources:
       Handler: com.dzhamal.aws.lambda.apis.CreateOrderLambda::createOrder
       Policies:
         - DynamoDBCrudPolicy:
-          TableName: !Ref OrdersTable
+            TableName: !Ref OrdersTable
       Events:
         OrderEvents:
           Type: Api
@@ -42,7 +42,7 @@ Resources:
       Handler: com.dzhamal.aws.lambda.apis.ReadOrdersLambda::getOrders
       Policies:
         - DynamoDBReadPolicy:
-          TableName: !Ref OrdersTable
+            TableName: !Ref OrdersTable
       Events:
         OrderEvents:
           Type: Api
