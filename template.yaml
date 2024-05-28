@@ -11,9 +11,16 @@ Globals:
 
 Resources:
   CreateOrderFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Type: AWS::Serverless::Function 
     Properties:
-      CodeUri: CreateOrderFunction
-      Handler: helloworld.App::handleRequest
+      CodeUri: ordersapi
+      Handler: com.dzhamal.aws.lambda.apis.CreateOrderLambda::createOrder
       Runtime: java11
       MemorySize: 512
+      Timeout: 30
+      Events:
+        OrderEvents:
+          Type: Api
+          Properties:
+            Path: /orders
+            Method: POST

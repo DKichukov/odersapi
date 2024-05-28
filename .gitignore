@@ -59,6 +59,7 @@ gradle-app.setting
 *~
 .idea/
 .idea/sonar/
+.idea/sonarlint/
 .vscode/
 *.bak
 *.orig
