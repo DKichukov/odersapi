@@ -24,3 +24,17 @@ Resources:
           Properties:
             Path: /orders
             Method: POST
+  ReadOrdersFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: ordersapi
+      Handler: com.dzhamal.aws.lambda.apis.ReadOrdersLambda::getOrders
+      Runtime: java11
+      MemorySize: 512
+      Timeout: 30
+      Events:
+        OrderEvents:
+          Type: Api
+          Properties:
+            Path: /orders
+            Method: GET
