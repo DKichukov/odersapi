@@ -49,3 +49,8 @@ Resources:
           Properties:
             Path: /orders
             Method: GET
+Outputs:
+  CreateOrdersAPI:
+    Description: "API Gateway endpoint url for create orders Function:"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/orders"
+    
