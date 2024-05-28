@@ -7,31 +7,37 @@ Description: >
 
 Globals:
   Function:
-    Timeout: 20
+    Runtime: java11
+    MemorySize: 512
+    Timeout: 30
+    Environment:
+      Variables:
+        ORDERS_TABLE: !Ref OrdersTable
 
 Resources:
+  OrdersTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: id
+
   CreateOrderFunction:
     Type: AWS::Serverless::Function 
     Properties:
       CodeUri: ordersapi
       Handler: com.dzhamal.aws.lambda.apis.CreateOrderLambda::createOrder
-      Runtime: java11
-      MemorySize: 512
-      Timeout: 30
       Events:
         OrderEvents:
           Type: Api
           Properties:
             Path: /orders
             Method: POST
+            
   ReadOrdersFunction:
     Type: AWS::Serverless::Function 
     Properties:
       CodeUri: ordersapi
       Handler: com.dzhamal.aws.lambda.apis.ReadOrdersLambda::getOrders
-      Runtime: java11
-      MemorySize: 512
-      Timeout: 30
       Events:
         OrderEvents:
           Type: Api
