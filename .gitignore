@@ -58,6 +58,7 @@ gradle-app.setting
 *.swp
 *~
 .idea/
+.idea/sonar/
 .vscode/
 *.bak
 *.orig
